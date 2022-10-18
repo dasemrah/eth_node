@@ -18,7 +18,7 @@ export class AppService {
     return 'Hello World!';
   }
   async getEth(req): Promise<any> {
-    const { addresses } = req.body;
+    const addresses = req.body;
     const wrong_addresses = [];
     const sorted_addresses = [];
     return fetch(ethURl)
@@ -40,7 +40,11 @@ export class AppService {
               } else wrong_addresses.push(item);
             }),
           );
-
+          sorted_addresses.sort(function (a, b) {
+            if (a.usd_balance > b.usd_balance) return -1;
+            if (a.usd_balance < b.usd_balance) return 1;
+            return 0;
+          });
           resolve({ wrong_addresses, sorted_addresses });
         });
       });
