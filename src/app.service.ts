@@ -10,8 +10,6 @@ const web3 = new Web3(
 );
 const ethURl =
   'https://api.coingecko.com/api/v3/simple/price?ids=ethereum%2C&vs_currencies=usd';
-const balanceUrl = (address) =>
-  `https://api.ethplorer.io/getAddressInfo/${address}?apiKey=EK-rCck5-i2jmqjb-9U3Js`;
 @Injectable()
 export class AppService {
   getHello(): string {
